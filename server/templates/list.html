@@ -4,9 +4,9 @@
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
   You may obtain a copy of the License at
-  
+
       https://www.apache.org/licenses/LICENSE-2.0
-  
+
   Unless required by applicable law or agreed to in writing, software
   distributed under the License is distributed on an "AS IS" BASIS,
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,7 +15,7 @@
 */}}
 {{if not .Services}}
   <div class="container welcomepage">
-    <p><h3>Welcome to the Web API Gateway!</h3><br></p>
+    <p><h3>Welcome to the Web API Gateway! list.html</h3><br></p>
     <p>Web API Gateway allows you to share API access with partners.<br></p>
     <p>Start by "<b>Adding a service</b>". </p>
 {{else}}
@@ -49,12 +49,12 @@
         </a>
         <dialog id="dialog-{{$ServiceName}}">
           <h3>Remove service</h3>
-          <p>Removing a service will delete all accounts created under this service. 
+          <p>Removing a service will delete all accounts created under this service.
             Please review and confirm your request. <br><br>
           Remove <b>{{$ServiceName}}</b>
           </p>
           <a href="/portal/removeservice/{{$ServiceName}}"class="btn btn-primary btn-sm">Save</a>
-          <button type="submit" autofocus id="close-{{$ServiceName}}" 
+          <button type="submit" autofocus id="close-{{$ServiceName}}"
           class="btn btn-default btn-sm">Cancel</button>
         </dialog>
         <button class="btn btn-default btn-sm" id="show-{{$ServiceName}}">
@@ -65,20 +65,20 @@
     {{range .Accounts}}
       <tr class="accounts">
         <td>{{.AccountName}}</td>
-        <td> 
+        <td>
           <a href="/portal/editaccount/{{$ServiceName}}/{{.AccountName}}"
           class="btn btn-default btn-sm">
             <span>Edit</span>
           </a>
           <dialog id="dialog-{{$ServiceName}}-{{.AccountName}}">
             <h3>Remove account</h3>
-            <p>Removing an account will break existing connections. Please 
+            <p>Removing an account will break existing connections. Please
             review and confirm your request. <br><br>
             Remove <b>{{.AccountName}}</b>
             </p>
-            <a href="/portal/removeaccount/{{$ServiceName}}/{{.AccountName}}" 
+            <a href="/portal/removeaccount/{{$ServiceName}}/{{.AccountName}}"
             class="btn btn-primary btn-sm">Save</a>
-            <button type="submit" autofocus id="close-{{$ServiceName}}-{{.AccountName}}" 
+            <button type="submit" autofocus id="close-{{$ServiceName}}-{{.AccountName}}"
             class="btn btn-default btn-sm">Cancel</button>
           </dialog>
           <button class="btn btn-default btn-sm" id="show-{{$ServiceName}}-{{.AccountName}}">
