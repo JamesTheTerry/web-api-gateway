@@ -30,7 +30,7 @@ import (
 
 	uuid "github.com/gofrs/uuid"
 	option "google.golang.org/api/option"
-	plus "google.golang.org/api/plus/v1"
+	people "google.golang.org/api/people/v1"
 
 	"github.com/google/web-api-gateway/config"
 	"github.com/gorilla/mux"
@@ -174,11 +174,11 @@ func oauthCallbackHandler(w http.ResponseWriter, r *http.Request) *appError {
 	// if browser saved an old session with name "default", the err here will
 	// not be nil, but this is ok, so no need to check on err
 	session, _ := cookieStore.New(r, defaultSessionID)
-	plusService, err := plus.NewService(ctx, option.WithTokenSource(oauthConf.TokenSource(ctx, tok)))
+	peopleService, err := people.NewService(ctx, option.WithTokenSource(oauthConf.TokenSource(ctx, tok)))
 	if err != nil {
-		return appErrorf(err, "could not get plus service: %v", err)
+		return appErrorf(err, "could not get people service: %v", err)
 	}
-	person, err := plusService.People.Get("me").Do()
+	person, err := peopleService.People.Get("people/me").Do()
 	if err != nil {
 		return appErrorf(err, "could not fetch Google profiles: %v", err)
 	}
