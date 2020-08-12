@@ -182,11 +182,14 @@ func oauthCallbackHandler(w http.ResponseWriter, r *http.Request) *appError {
 	if err != nil {
 		return appErrorf(err, "could not fetch Google profiles: %v", err)
 	}
-	fmt.Pprintf("person")
-	fmt.Pprintf("%v", person)
+
+	fmt.Println("person")
+	fmt.Printf("%v", person)
+
 	profile := stripProfile(person)
-	fmt.Pprintf("profile")
-	fmt.Pprintf("%v", profile)
+
+	fmt.Println("profile")
+	fmt.Printf("%v", profile)
 
 	c, err := config.ReadConfig()
 	if err != nil {
